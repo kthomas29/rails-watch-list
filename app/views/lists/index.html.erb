@@ -1,0 +1,18 @@
+<div class = "banner">
+  <h1>Lists</h1>
+  <h2><%= link_to "Create a movie list", new_list_path, class: "btn btn-primary" %></h2>
+</div>
+
+<div class="cards">
+  <div class="row">
+    <% @lists.each do |list| %>
+
+      <div class="card" col-6 col-md-9 col-lg-12>
+        <div class="card_img">
+          <%= link_to image_tag(list.photo), list_path(list) %>
+        </div>
+          <h2><strong><%= list.name.upcase %></strong></h2>
+        </div>
+    <% end %>
+  </div>
+</div>

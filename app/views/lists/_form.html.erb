@@ -1,0 +1,12 @@
+<h1 class="playlist_and_bookmark_title">Your new playlist</h1>
+
+<div class="new_playlist_form">
+  <%= simple_form_for(@list) do |f| %>
+    <%= f.input :name %>
+    <p style="color:white;">Playlist name</p>
+
+    <%= f.input :photo, as: :file %>
+    <%= f.button :submit, class: "btn btn-success" %>
+    <%= link_to "Back to lists", root_path, class: "btn btn-warning" %><br>
+  <% end %>
+</div>

@@ -1,0 +1,42 @@
+<div class="playlist_and_bookmark_title">
+  <h1><%= @list.name.upcase %></h1>
+</div>
+
+<div class="movies_container">
+  <div class="row">
+      <% @list.bookmarks.each do |bookmark| %>
+        <div class="movie" col-12 col-lg-6>
+
+          <div class="movie_img">
+            <%= cl_image_tag bookmark.movie.poster_url, :height=>250, class: "imgstyle", :crop=>"scale"%>
+          </div>
+
+          <div class="movie_text">
+            <div class="movie_title_rating">
+              <strong><%= bookmark.movie.title %></strong><%= bookmark.movie.rating %> &#11088<br><br>
+            </div>
+            <%= bookmark.movie.overview %><br><br>
+
+            Your Comment : <%= bookmark.comment %><br>
+
+            <%= link_to "Delete the movie", bookmark_path(bookmark),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" },
+                    color: $FD1015%>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div>
+
+<div>
+
+<div class="playlist_btns">
+  <%= link_to "Add a bookmark to this list", new_list_bookmark_path(@list), class: "btn btn-primary"%>
+  <%= link_to "Back to playlists", root_path, class: "btn btn-success" %><br>
+
+  <%= link_to "Delete the playlist", list_path(@list),
+      method: :delete,
+      data: { confirm: "Are you sure?" },
+      class: "btn btn-warning" %>
+</div>

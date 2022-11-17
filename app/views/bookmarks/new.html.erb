@@ -1,0 +1,10 @@
+<h1 class="playlist_and_bookmark_title"><%= @list.name.upcase %></h1>
+
+<div class="bookmark_form">
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+    <%= f.input :comment, :placeholder => 'Add a comment' %>
+    <%= f.association :movie, input_html: { id: "selection" }, prompt: "Select a movie" %>
+    <%= f.button :submit, class: "btn btn-success" %>
+    <%= link_to 'Back to the list', list_path(@list), class: " btn btn-warning" %>
+  <% end %>
+</div>
