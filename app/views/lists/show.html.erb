@@ -8,7 +8,7 @@
         <div class="movie" col-12 col-lg-6>
 
           <div class="movie_img">
-            <%= cl_image_tag bookmark.movie.poster_url, :height=>250, class: "imgstyle", :crop=>"scale"%>
+            <%= image_tag bookmark.movie.poster_url, :height=>250, class: "imgstyle", :crop=>"scale"%>
           </div>
 
           <div class="movie_text">
@@ -20,8 +20,7 @@
             Your Comment : <%= bookmark.comment %><br>
 
             <%= link_to "Delete the movie", bookmark_path(bookmark),
-                    method: :delete,
-                    data: { confirm: "Are you sure?" },
+                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
                     color: $FD1015%>
           </div>
         </div>
@@ -36,7 +35,6 @@
   <%= link_to "Back to playlists", root_path, class: "btn btn-success" %><br>
 
   <%= link_to "Delete the playlist", list_path(@list),
-      method: :delete,
-      data: { confirm: "Are you sure?" },
+      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
       class: "btn btn-warning" %>
 </div>
